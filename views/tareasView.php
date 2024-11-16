@@ -4,8 +4,6 @@ namespace App\views;
 
 
 use App\controller\TareasController;
-use App\views\EstadosViews;
-use App\views\EmpleadosViews;
 use App\models\entities\Empleado;
 use App\models\entities\Estado;
 use App\models\entities\Prioridad;
@@ -21,12 +19,10 @@ class TareasView
     }
     function getTable($titulo, $fechaInicio, $fechaFin, $idPrioridad, $idEmpleado, $descripcion, $idEstado)
 {
-    // Obtener datos necesarios
     $empleados = Empleado::all();
     $estados = Estado::all();
     $prioridades = Prioridad::all();
 
-    // Obtener tareas filtradas
     $tareas = $this->controller->getAlltareas($titulo, $fechaInicio, $fechaFin, $idPrioridad, $idEmpleado, $descripcion, $idEstado);
     if (!is_array($tareas)) {
         $tareas = [$tareas];
@@ -35,7 +31,6 @@ class TareasView
     // Ordenar tareas por prioridad y fecha estimada de finalización
     usort($tareas, fn($a, $b) => strcmp($a->get('idPrioridad'), $b->get('idPrioridad')) ?: strcmp($a->get('fechaEstimadaFinalizacion'), $b->get('fechaEstimadaFinalizacion')));
 
-    // Construir filas de la tabla
     $rows = array_map(function ($tarea) use ($empleados, $estados, $prioridades) {
         $id = $tarea->get('id');
         $nombreEmpleado = $this->buscarNombre($empleados, $tarea->get('idEmpleado'), 'nombre');
@@ -253,9 +248,9 @@ function getMsgUpdateTarea($datosFormulario)
             "idPrioridad" => $datosFormulario['idPrioridad'],
         ];
         $confirmarAccion = $this->controller->updateTarea($datos);
-        $msg = '<h2>Resultado de la operación</h2>';
+        $msg = '<h2>Tarea</h2>';
         if ($confirmarAccion) {
-            $msg .= '<p>Datos del contacto guardados.</p>';
+            $msg .= '<p>Datos guardados.</p>';
         } else {
             $msg .= '<p>No se pudo guardar la información del contacto</p>';
         }
@@ -275,9 +270,9 @@ function getMsgUpdateTarea($datosFormulario)
             "idPrioridad" => $datosFormulario['idPrioridad'],
         ];
         $confirmarAccion = $this->controller->saveTarea($datos);
-        $msg = '<h2>Resultado de la operación</h2>';
+        $msg = '<h2>Tarea</h2>';
         if ($confirmarAccion) {
-            $msg .= '<p>La tarea se guardo correctamente.</p>';
+            $msg .= '<p>Tarea Guardada Correctamente.</p>';
         } else {
             $msg .= '<p>No se pudo guardar la tarea</p>';
         }
