@@ -16,17 +16,22 @@ require '../views/empleadosView.php';
 require '../views/tareasView.php';
 require '../views/estadosView.php';
 require '../views/prioridadesView.php';
+require '../views/modalsView.php';
+
 
 
 use App\views\EmpleadosViews;
 use App\views\TareasView;
 use App\views\PrioridadesViews;
 use App\views\EstadosViews;
+use App\views\ModalsView;
 
 $empleadosView = new EmpleadosViews();
 $tareasViews = new TareasView();
 $prioridadesView = new PrioridadesViews();
 $estadosView = new EstadosViews();
+$modalsView = new ModalsView();
+
 
 $titulo = isset($_GET['titulo']) ? $_GET['titulo'] : '';
 $fechaInicio = isset($_GET['fechaInicio']) ? $_GET['fechaInicio'] : '';
@@ -101,6 +106,14 @@ $idEstado = isset($_GET['idEstado']) ? $_GET['idEstado'] : '';
         echo $tareasViews->getTable($titulo, $fechaInicio, $fechaFin, $idPrioridad, $idEmpleado, $descripcion, $idEstado);
         ?>
     </div>
+
+    <?php
+    echo $modalsView->getConfirmationModal(
+        'tareaEliminarModal',
+        'tareaForm',
+        'eliminarTarea.php'
+    )
+    ?>
 
     <script src="js/tareas.js"></script>
 </body>

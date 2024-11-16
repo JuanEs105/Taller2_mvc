@@ -6,9 +6,23 @@ class TareasQueries
 {
 
     static function selectAll()
-    {
-        return "select tareas.*, prioridades.nombre as Prioridad, estados.nombre as Estado, empleados.nombre as Empleado from tareas inner join prioridades on tareas.idPrioridad=prioridades.id inner join estados on tareas.idEstado=estados.id inner join empleados on tareas.idEmpleado=empleados.id ORDER BY tareas.idPrioridad ASC, `tareas`.`fechaEstimadaFinalizacion` ASC;";
-    }
+{
+    return "
+        SELECT 
+            tareas.*, 
+            prioridades.nombre AS Prioridad, 
+            estados.nombre AS Estado, 
+            empleados.nombre AS Empleado
+        FROM 
+            tareas
+        LEFT JOIN 
+            prioridades ON tareas.idPrioridad = prioridades.id
+        LEFT JOIN 
+            estados ON tareas.idEstado = estados.id
+        LEFT JOIN 
+            empleados ON tareas.idEmpleado = empleados.id
+    ";
+}
     
     
     static function insert($tarea)
@@ -48,11 +62,13 @@ class TareasQueries
         $sql = "update tareas set titulo='$titulo', descripcion='$descripcion', fechaEstimadaFinalizacion='$fechaEstimadaFinalizacion', fechaFinalizacion='$fechaFinalizacion', creadorTarea='$creadorTarea', observaciones='$observaciones', idEmpleado='$idEmpleado', idEstado='$idEstado', idPrioridad='$idPrioridad', updated_at='$updated_at' where id=$id";
         return $sql;
     }
+
     static function delete($tarea)
     {
         $id = $tarea->get('id');
         return "delete from tareas where id=$id";
     }
+
     static function whereIdPrioridad($IdPrioridad)
     {
         return "select * from tareas where IdPrioridad=$IdPrioridad";
@@ -77,6 +93,49 @@ class TareasQueries
         $updated_at = $tarea->get('updated_at');
         $sql = "update tareas set idEmpleado='$idEmpleado', updated_at='$updated_at' where id=$id";
         return $sql;
+    }
+    static function filtrerTarea($titulo, $fechaInicio, $fechaFin, $idPrioridad, $idEmpleado, $descripcion)
+    {
+        $query = "SELECT tareas.* FROM tareas
+              INNER JOIN empleados ON tareas.idEmpleado = empleados.id
+              INNER JOIN prioridades ON tareas.idPrioridad = prioridades.id
+              WHERE 1=1";
+
+        if (!empty($idPrioridad)) {
+            $query .= " AND tareas.idPrioridad = '$idPrioridad'";
+        }
+
+        if (!empty($idEmpleado)) {
+            $query .= " AND tareas.idEmpleado = '$idEmpleado'";
+        }
+
+        if (!empty($descripcion)) {
+            $query .= " AND tareas.descripcion = '$descripcion'";
+        }
+
+        if (!empty($titulo)) {
+            $query .= " AND tareas.titulo = '$titulo'";
+        }
+
+        if (!empty($fechaInicio) && !empty($fechaFin)) {
+            $query .= " AND tareas.fechaEstimadaFinalizacion BETWEEN '$fechaInicio' AND '$fechaFin'";
+        } elseif (!empty($fechaInicio)) {
+            $query .= " AND tareas.fechaEstimadaFinalizacion >= '$fechaInicio'";
+        } elseif (!empty($fechaFin)) {
+            $query .= " AND tareas.fechaEstimadaFinalizacion <= '$fechaFin'";
+        }
+
+        return $query;
+    }
+    static function agruparTarea($idEstado)
+    {
+        $query = "SELECT * FROM tareas WHERE 1=1";
+
+        if (!empty($idEstado)) {
+            $query .= " AND idEstado = '$idEstado'";
+        }
+
+        return $query;
     }
    
    

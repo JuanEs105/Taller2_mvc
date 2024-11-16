@@ -1,71 +1,36 @@
-// Función genérica para mostrar un modal o ventana
-const mostrarElemento = (selector) => {
-    const elemento = document.querySelector(selector);
-    if (elemento) elemento.style.display = "flex";
-  };
-  
-  // Función genérica para ocultar un modal o ventana
-  const ocultarElemento = (selector) => {
-    const elemento = document.querySelector(selector);
-    if (elemento) elemento.style.display = "none";
-  };
-  
-  // Función para configurar el modal de eliminación
-  const configurarEliminarTarea = () => {
-    const tareaEliminarModal = document.getElementById("tareaEliminarModal");
-    const tareaForm = document.forms["tareaForm"];
-  
-    document.addEventListener("click", (event) => {
-      const target = event.target;
-  
-      // Mostrar modal de eliminación
-      if (target.matches(".btn-eliminar")) {
-        const tareaId = target.dataset.id; // Asegúrate de que el botón tenga el atributo `data-id`
-        const codInput = tareaForm["cod"];
-        codInput.value = tareaId;
-        mostrarElemento("#tareaEliminarModal");
-      }
-  
-      // Cerrar modal (closeBtn o notBtn)
-      if (
-        target.matches("#tareaEliminarModal .closeBtn") ||
-        target.matches("#tareaEliminarModal .notBtn")
-      ) {
-        ocultarElemento("#tareaEliminarModal");
-      }
-    });
-  };
-  
-  // Configurar el manejo de las ventanas emergentes (filtrar/agrupar)
-  const configurarVentanasEmergentes = () => {
-    document.addEventListener("click", (event) => {
-      const target = event.target;
-  
-      // Mostrar ventana de filtrar
-      if (target.matches(".btn-filtrar")) {
-        mostrarElemento("#fondoVentana");
-      }
-  
-      // Cerrar ventana de filtrar
-      if (target.matches("#fondoVentana .cerrarVentana")) {
-        ocultarElemento("#fondoVentana");
-      }
-  
-      // Mostrar ventana de agrupar
-      if (target.matches(".btn-agrupar")) {
-        mostrarElemento("#fondoVentanaAgrupar");
-      }
-  
-      // Cerrar ventana de agrupar
-      if (target.matches("#fondoVentanaAgrupar .cerrarVentanaAgrupar")) {
-        ocultarElemento("#fondoVentanaAgrupar");
-      }
-    });
-  };
-  
-  // Inicializar funcionalidades
-  document.addEventListener("DOMContentLoaded", () => {
-    configurarEliminarTarea();
-    configurarVentanasEmergentes();
-  });
-  
+const tareasEliminarModal = document.getElementById("tareaEliminarModal");
+const closeBtnModal =
+  tareasEliminarModal.getElementsByClassName("closeBtn")[0];
+const notBtnModal = contactoEliminarModal.getElementsByClassName("notBtn")[0];
+const contactoForm = document.forms["tareaForm"];
+
+const eliminarTarea = (id) => {
+  const codInput = contactoForm["cod"];
+  codInput.value = id;
+  contactoEliminarModal.classList.remove("ocultarModal");
+};
+
+const cerrarModal = () => {
+  contactoEliminarModal.classList.add("ocultarModal");
+};
+
+closeBtnModal.addEventListener("click", () => cerrarModal());
+notBtnModal.addEventListener("click", () => cerrarModal());
+
+// FILTRAR
+function mostrarVentana() {
+  document.getElementById("fondoVentana").style.display = "flex";
+}
+
+function cerrarVentana() {
+  document.getElementById("fondoVentana").style.display = "none";
+}
+
+// AGRUPAR
+function mostrarVentanaAgrupar() {
+  document.getElementById("fondoVentanaAgrupar").style.display = "flex";
+}
+
+function cerrarVentanaAgrupar() {
+  document.getElementById("fondoVentanaAgrupar").style.display = "none";
+}

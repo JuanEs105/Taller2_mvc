@@ -17,10 +17,9 @@ class Tarea {
     private $idPrioridad;
     private $created_at;
     private $updated_at;
-
-    private $prioridad; /// objeto Prioridad
-    private $estado; /// objeto Estado
-    private $empleado; /// objeto Empleado
+    private $prioridad; 
+    private $estado; 
+    private $empleado; 
 
 
 
@@ -78,6 +77,54 @@ class Tarea {
         $db = new Tareasdb();
         $result = $db->query($sql);
         $tarea = null;
+        while ($row = $result->fetch_assoc()) {
+            $tarea = new Tarea();
+            $tarea->set('id', $row['id']);
+            $tarea->set('titulo', $row['titulo']);
+            $tarea->set('descripcion', $row['descripcion']);
+            $tarea->set('fechaEstimadaFinalizacion', $row['fechaEstimadaFinalizacion']);
+            $tarea->set('fechaFinalizacion', $row['fechaFinalizacion']);
+            $tarea->set('creadorTarea', $row['creadorTarea']);
+            $tarea->set('observaciones', $row['observaciones']);
+            $tarea->set('idEmpleado', $row['idEmpleado']);
+            $tarea->set('idEstado', $row['idEstado']);
+            $tarea->set('idPrioridad', $row['idPrioridad']);
+            $tarea->set('created_at', $row['created_at']);
+            $tarea->set('updated_at', $row['updated_at']);
+        }
+        $db->close();
+        return $tarea;
+    }
+    static function filtrer($titulo, $fechaInicio, $fechaFin, $idPrioridad, $idEmpleado, $descripcion)
+    {
+        $sql = TareasQueries::filtrerTarea($titulo, $fechaInicio, $fechaFin, $idPrioridad, $idEmpleado, $descripcion);
+        $db = new tareasDb();
+        $result = $db->query($sql);
+        $tarea = [];
+        while ($row = $result->fetch_assoc()) {
+            $tarea = new Tarea();
+            $tarea->set('id', $row['id']);
+            $tarea->set('titulo', $row['titulo']);
+            $tarea->set('descripcion', $row['descripcion']);
+            $tarea->set('fechaEstimadaFinalizacion', $row['fechaEstimadaFinalizacion']);
+            $tarea->set('fechaFinalizacion', $row['fechaFinalizacion']);
+            $tarea->set('creadorTarea', $row['creadorTarea']);
+            $tarea->set('observaciones', $row['observaciones']);
+            $tarea->set('idEmpleado', $row['idEmpleado']);
+            $tarea->set('idEstado', $row['idEstado']);
+            $tarea->set('idPrioridad', $row['idPrioridad']);
+            $tarea->set('created_at', $row['created_at']);
+            $tarea->set('updated_at', $row['updated_at']);
+        }
+        $db->close();
+        return $tarea;
+    }
+    static function agrupar($idEstado)
+    {
+        $sql = TareasQueries::agruparTarea($idEstado);
+        $db = new tareasDb();
+        $result = $db->query($sql);
+        $tarea = [];
         while ($row = $result->fetch_assoc()) {
             $tarea = new Tarea();
             $tarea->set('id', $row['id']);

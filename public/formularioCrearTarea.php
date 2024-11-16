@@ -14,6 +14,8 @@ require '../models/queries/estadosQueries.php';
 require '../models/queries/prioridadesQueries.php';
 require '../views/empleadosView.php';
 require '../views/tareasView.php';
+require '../views/modalsView.php';
+
 
 use App\views\TareasView;
 

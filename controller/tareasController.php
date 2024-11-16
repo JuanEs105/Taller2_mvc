@@ -5,8 +5,16 @@ use App\models\entities\Tarea;
 class TareasController {
 
 
-    function getAllTareas($filtro) {
-        return Tarea::all();
+    function getAllTareas($titulo, $fechaInicio, $fechaFin, $idPrioridad, $idEmpleado, $descripcion, $idEstado)
+    {
+        if (!empty($titulo) || !empty($fechaInicio) || !empty($fechaFin)) {
+            return Tarea::filtrer($titulo, $fechaInicio, $fechaFin, $idPrioridad, $idEmpleado, $descripcion);
+        } elseif(!empty($idEstado))
+        {
+            return Tarea::agrupar($idEstado);
+        } else {
+            return Tarea::all();
+        }
     }
     
     function saveTarea($datos) {
@@ -24,9 +32,11 @@ class TareasController {
         $tarea->set('updated_at', date("Y-m-d H:i:s"));
         return $tarea->save();
     }
+
     function getTarea($id) {
         return Tarea::find($id);
     }
+    
     function updateTarea($datos) {
         $tarea = new Tarea();
         $tarea->set('id', $datos['id']);
@@ -42,12 +52,7 @@ class TareasController {
         $tarea->set('updated_at',  date("Y-m-d H:i:s"));
         return $tarea->update();
     }
-    function deleteTarea($id)
-    {
-        $tarea = new Tarea();
-        $tarea->set('id', $id);
-        return $tarea->delete();
-    }
+    
     function updateEstado($datos) {
         $tarea = new Tarea();
         $tarea->set('id', $datos['id']);
@@ -59,6 +64,12 @@ class TareasController {
         $tarea->set('id', $datos['id']);
         $tarea->set('idEmpleado', $datos['idEmpleado']);
         return $tarea->updateEmpleado();
+    }
+    function deleteTarea($id)
+    {
+        $tarea = new Tarea();
+        $tarea->set('id', $id);
+        return $tarea->delete();
     }
 }
 ?>

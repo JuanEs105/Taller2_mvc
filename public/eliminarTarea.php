@@ -3,33 +3,41 @@ require '../controller/empleadosController.php';
 require '../controller/tareasController.php';
 require '../controller/estadosController.php';
 require '../controller/prioridadesController.php';
+
 require '../models/db/tareasdb.php';
+
 require '../models/entities/empleados.php';
 require '../models/entities/tareas.php';
 require '../models/entities/estados.php';
 require '../models/entities/prioridades.php';
+
 require '../models/queries/empleadosQueries.php';
 require '../models/queries/tareasQueries.php';
 require '../models/queries/estadosQueries.php';
+
 require '../models/queries/prioridadesQueries.php';
 require '../views/empleadosView.php';
 require '../views/tareasView.php';
+require '../views/modalsView.php';
+
 
 use App\views\TareasView;
 
 $tareasViews = new TareasView();
-$msg = $tareasViews->getMsgDeleteTarea($_POST['cod']);
+$msg = $tareasViews->getMsgDeleteTarea($_GET['cod']);
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eliminar Tarea</title>
+    <title>Eliminar tarea</title>
+    <link rel="stylesheet" href="css/inicio.css">
+
 </head>
 <body>
     <header>
-        <h1>Estado de acción</h1>
+        <h1 class="estado">Eliminar</h1>
     </header>
     <section>
         <?php echo $msg;?>
