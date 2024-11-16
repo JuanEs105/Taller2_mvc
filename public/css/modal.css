@@ -1,4 +1,3 @@
-/* General Modal Styles */
 .modal {
     position: fixed;
     top: 0;
@@ -16,7 +15,6 @@
     display: none;
 }
 
-/* Filtrar Modal */
 .fondoVentana {
     display: none;
     position: fixed;
@@ -46,7 +44,6 @@
     font-weight: bold;
 }
 
-/* Agrupar Modal */
 .fondoVentanaAgrupar {
     display: none;
     position: fixed;
@@ -76,7 +73,6 @@
     font-weight: bold;
 }
 
-/* Forms inside Modals */
 .formulario-filtro,
 .formulario-agrupar {
     display: flex;

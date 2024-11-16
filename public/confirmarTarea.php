@@ -35,10 +35,12 @@ $msg = empty($datosFormulario['cod'])
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmar acción</title>
+    <link rel="stylesheet" href="css/formularioCreaTarea.css">
+
 </head>
 <body>
     <header>
-        <h1>Estado de acción</h1>
+        <h1>Tarea</h1>
     </header>
     <section>
         <?php echo $msg;?>

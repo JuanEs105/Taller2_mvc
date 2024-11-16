@@ -34,7 +34,7 @@ $form = $tareasViews->getFormTarea($_GET);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario tareas</title>
-    <link rel="stylesheet" href="css/formularioCrearTarea.css">
+    <link rel="stylesheet" href="css/formularioCreaTarea.css">
 
 </head>
 
