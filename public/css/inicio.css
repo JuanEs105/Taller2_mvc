@@ -1,0 +1,134 @@
+.body-inicio {
+    font-family: 'Verdana', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.titulo {
+    font-size: 2rem;
+    color: #222831;
+    margin: 0;
+    text-align: left;
+    font-weight: bold;
+    width: 100%;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eeeeee;
+    padding-bottom: 10px;
+}
+
+.formulario {
+    flex: 0 0 40%;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-left: auto;
+}
+
+.tabla-tareas {
+    flex: 0 0 55%;
+    margin-right: auto;
+    margin-top: 20px;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tabla-tareas table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-tareas th {
+    text-align: left;
+    background-color: #00adb5;
+    color: white;
+    padding: 10px;
+    border: 1px solid #eeeeee;
+    font-size: 1rem;
+}
+
+.tabla-tareas td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #eeeeee;
+    color: #333333;
+    font-size: 0.9rem;
+}
+
+.tabla-tareas tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.tabla-tareas tr:hover td {
+    background-color: #00adb5;
+    color: white;
+}
+
+.btn-crear-tarea,
+.btn-filtrar,
+.btn-agrupar,
+.btn-agrupar1,
+.btn-filtrar-submit,
+.btn-agrupar-submit {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff5722;
+    color: white;
+    text-align: center;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin: 5px 0;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-crear-tarea:hover,
+.btn-filtrar:hover,
+.btn-agrupar:hover,
+.btn-agrupar1:hover {
+    background-color: #e64a19;
+    transform: translateY(-3px);
+}
+
+.input-filtro,
+.select-filtro {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+.input-filtro:focus,
+.select-filtro:focus {
+    border-color: #00adb5;
+    outline: none;
+}
+
+@media (max-width: 768px) {
+    .body-inicio {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .formulario,
+    .tabla-tareas {
+        flex: 0 0 90%;
+        margin: 10px 0;
+    }
+
+    .titulo {
+        text-align: center;
+    }
+}

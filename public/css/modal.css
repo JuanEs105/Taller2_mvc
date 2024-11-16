@@ -1,0 +1,177 @@
+/* General Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.ocultarModal {
+    display: none;
+}
+
+/* Filtrar Modal */
+.fondoVentana {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.ventana {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 320px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.cerrarVentana {
+    color: red;
+    cursor: pointer;
+    float: right;
+    font-weight: bold;
+}
+
+/* Agrupar Modal */
+.fondoVentanaAgrupar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.ventanaAgrupar {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 320px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.cerrarVentanaAgrupar {
+    color: red;
+    cursor: pointer;
+    float: right;
+    font-weight: bold;
+}
+
+/* Forms inside Modals */
+.formulario-filtro,
+.formulario-agrupar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+}
+
+.label-filtro,
+.label-agrupar {
+    font-weight: bold;
+}
+
+.input-filtro,
+.select-filtro,
+.input-agrupar,
+.select-agrupar {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn-filtrar-submit,
+.btn-agrupar-submit {
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-filtrar-submit:hover,
+.btn-agrupar-submit:hover {
+    background-color: #0056b3;
+}
+
+/* Table and Buttons */
+.titulo {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.btn-crear-tarea,
+.btn-filtrar,
+.btn-agrupar,
+.btn-agrupar1 {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.btn-crear-tarea:hover,
+.btn-filtrar:hover,
+.btn-agrupar:hover,
+.btn-agrupar1:hover {
+    background-color: #218838;
+}
+
+.tabla-tareas {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 1200px;
+    border-collapse: collapse;
+}
+
+.tabla-tareas table {
+    width: 100%;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.tabla-tareas th,
+.tabla-tareas td {
+    padding: 12px;
+    border-bottom: 1px solid #ccc;
+}
+
+.tabla-tareas th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+.tabla-tareas tr:hover {
+    background-color: #f1f1f1;
+}
