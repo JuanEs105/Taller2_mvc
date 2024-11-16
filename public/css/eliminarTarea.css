@@ -1,0 +1,65 @@
+/* General */
+body {
+    font-family: 'Verdana', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+/* Header */
+header {
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #222831;
+    margin: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 3px solid #ff5722;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+/* Section */
+section {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+}
+
+section p {
+    font-size: 1.2rem;
+    color: #333333;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* Botón */
+section a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff5722;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+section a:hover {
+    background-color: #e64a19;
+    transform: translateY(-3px);
+}

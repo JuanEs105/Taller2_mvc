@@ -56,10 +56,10 @@ class TareasView
             . '<td>' . $nombrePrioridad . '</td>'
             . '<td>' . $tarea->get('created_at') . '</td>'
             . '<td>' . $tarea->get('updated_at') . '</td>'
-            . '<td><a href="formularioTarea.php?cod=' . $id . '">Modificar</a></td>'
-            . '<td><a href="eliminarTarea.php?cod='. $id .'">Borrar</button></td>'
-            . '<td><a href="formularioTarea.php?cod=' . $id . '&campo=responsable">Responsable</a></td>'
-            . '<td><a href="formularioTarea.php?cod=' . $id . '&campo=estado">Estado</a></td>'
+            . '<td><a href="formularioCrearTarea.php?cod=' . $id . '">Modificar</a></td>'
+            .'<td><a href="eliminarTarea.php?cod='. $id .'" onclick="return confirm(\'¿Estás seguro de que deseas eliminar esta tarea?\');">Borrar</a></td>'
+            . '<td><a href="formularioCrearTarea.php?cod=' . $id . '&campo=responsable">Responsable</a></td>'
+            . '<td><a href="formularioCrearTarea.php=' . $id . '&campo=estado">Estado</a></td>'
             . '</tr>';
     }, $tareas);
 
@@ -67,7 +67,6 @@ class TareasView
         $rows[] = '<tr><td colspan="12">No hay datos registrados</td></tr>';
     }
 
-    // Construir tabla completa
     $table = '<table>'
         . '<thead>'
         . '<tr>'

@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f7fc;
+    background-color: #f0f8ff; /* Fondo claro y limpio */
     margin: 0;
     padding: 0;
     display: flex;
@@ -14,28 +14,88 @@ h1.titulo {
     margin-top: 20px;
     font-weight: bold;
     text-align: center;
+    border-bottom: 3px solid #00aaff; /* Línea decorativa */
+    padding-bottom: 10px;
 }
 
 a.btn-crear-tarea, button.btn-filtrar, button.btn-agrupar, button.btn-agrupar1 {
     display: inline-block;
-    background-color: #007bff;
+    background: linear-gradient(135deg, #00aaff, #007bff); /* Degradado llamativo */
     color: white;
     text-decoration: none;
-    padding: 10px 20px;
-    font-size: 1rem;
+    padding: 10px 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
     border: none;
-    border-radius: 5px;
+    border-radius: 30px; /* Bordes redondeados */
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s;
+    transition: background 0.3s ease, transform 0.2s ease;
     margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 a.btn-crear-tarea:hover, button.btn-filtrar:hover, button.btn-agrupar:hover, button.btn-agrupar1:hover {
-    background-color: #0056b3;
+    background: linear-gradient(135deg, #007bff, #0056b3); /* Degradado más oscuro */
+    transform: scale(1.05); /* Efecto de zoom */
+}
+
+div.ventana, div.ventanaAgrupar {
+    background: #ffffff;
+    padding: 20px 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+form.formulario-filtro, form.formulario-agrupar {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaciado entre elementos */
+    margin-top: 10px;
+}
+
+label {
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: bold;
+}
+
+input[type="date"], input[type="text"], select {
+    padding: 12px;
+    font-size: 1rem;
+    border: 2px solid #00aaff;
+    border-radius: 8px;
+    background: #f9f9f9; /* Fondo suave */
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+input[type="date"]:focus, input[type="text"]:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+button[type="submit"] {
+    background: linear-gradient(135deg, #00c853, #00a152); /* Colores vivos */
+    color: white;
+    padding: 12px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, #00a152, #007bff); /* Efecto degradado al pasar el mouse */
     transform: scale(1.05);
 }
 
-div.fondoVentana, div.fondoVentanaAgrupar {
+div.fondoVentana {
     display: none;
     position: fixed;
     top: 0;
@@ -48,54 +108,11 @@ div.fondoVentana, div.fondoVentanaAgrupar {
     z-index: 10;
 }
 
-div.ventana, div.ventanaAgrupar {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-span.cerrarVentana, span.cerrarVentanaAgrupar {
+span.cerrarVentana {
     display: block;
     text-align: right;
     font-size: 1.5rem;
-    color: #333;
+    color: #555;
     cursor: pointer;
     margin-bottom: 10px;
-}
-
-form.formulario-filtro, form.formulario-agrupar {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 5px;
-}
-
-input[type="date"], input[type="text"], select {
-    padding: 10px;
-    font-size: 1rem;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button[type="submit"] {
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button[type="submit"]:hover {
-    background-color: #0056b3;
 }

@@ -3,15 +3,19 @@ require '../controller/empleadosController.php';
 require '../controller/tareasController.php';
 require '../controller/estadosController.php';
 require '../controller/prioridadesController.php';
+
 require '../models/db/tareasdb.php';
+
 require '../models/entities/empleados.php';
 require '../models/entities/tareas.php';
 require '../models/entities/estados.php';
 require '../models/entities/prioridades.php';
+
 require '../models/queries/empleadosQueries.php';
 require '../models/queries/tareasQueries.php';
 require '../models/queries/estadosQueries.php';
 require '../models/queries/prioridadesQueries.php';
+
 require '../views/empleadosView.php';
 require '../views/tareasView.php';
 require '../views/modalsView.php';
@@ -30,7 +34,7 @@ $form = $tareasViews->getFormTarea($_GET);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario tareas</title>
-    <link rel="stylesheet" href="css/formularioCreaTarea.css">
+    <link rel="stylesheet" href="css/formularioCrearTarea.css">
 
 </head>
 

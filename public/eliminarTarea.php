@@ -32,7 +32,7 @@ $msg = $tareasViews->getMsgDeleteTarea($_GET['cod']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eliminar tarea</title>
-    <link rel="stylesheet" href="css/inicio.css">
+    <link rel="stylesheet" href="css/eliminarTarea.css">
 
 </head>
 <body>
